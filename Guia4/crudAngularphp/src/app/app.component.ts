@@ -17,6 +17,8 @@ export class AppComponent {
   art = {
     codigo: 0,
     descripcion: null,
+    proveedor: null,
+    fabricante:  null,
     precio: null
   }
 
@@ -32,11 +34,11 @@ export class AppComponent {
 
   alta() {
     this.articulosServicio.alta(this.art).subscribe(datos => {
-      if(datos['resultado'] == 'OK') {
-        alert(datos['mensaje']);
-        this.recuperarTodos();
-        this.art = {codigo: 0, descripcion: null, precio: null};
-      }
+        if(datos['resultado'] == 'OK') {
+          alert(datos['mensaje']);
+          this.recuperarTodos();
+          this.art = {codigo: 0, descripcion: null, proveedor: null, fabricante: null, precio: null};
+        }
     });
   }
 
@@ -56,7 +58,7 @@ export class AppComponent {
       if(datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
-        this.art = { codigo: 0, descripcion: null, precio: null};
+        this.art = {codigo: 0, descripcion: null, proveedor: null, fabricante: null, precio: null};
       }
     });
   }
